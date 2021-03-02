@@ -1,12 +1,8 @@
 name: Node.js CI
-
 on: [push]
-
 jobs:
-  build:
-
+  buildAndTest:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -21,3 +17,5 @@ jobs:
       with:
         name: code-coverage-report
         path: tests/testSuite.xml
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1.9
